@@ -35,13 +35,46 @@ class ArrayRotation {
         this.reverseArr(tempArr, 0, n - 1)
         return tempArr
     }
+    public rotatethroughJugglingAlgo(arr: Array<number>, k: number) {
+        let n = arr.length
+        k = k % n
+        let gcd = this.gcd(k, n)
+        console.log(gcd)
+        for (let i = 0; i < gcd; i++) {
+            let j = i;
+            let temp = arr[i]
+            while (true) {
+                let m = j + k
+                if (m >= n) {
+                    m = m - n
+                }
+                if (m == i) {
+                    break
+                }
+                console.log('m:'+m)
+                arr[j] = arr[m]
+                j = m
+            }
+            arr[j] = temp
+        }
+        return arr
+
+    }
+    public gcd(a: number, b: number) {
+        if (a == 0) {
+            return b
+        }
+        return this.gcd(b % a, a)
+    }
 }
 
 let Arr = [7, 1, 10, 8, 3, 5, 6]
 let instance = new ArrayRotation()
 instance.preProcess(Arr)
-console.log(instance.rotateNtime(1, Arr.length))
-console.log(instance.rotateNtime(10, Arr.length))
-console.log(instance.rotateThroughReversal(Arr, 1))
-console.log(instance.rotateThroughReversal(Arr, 10))
-console.log(Arr)
+
+// console.log(instance.rotateNtime(1, Arr.length))
+// console.log(instance.rotateNtime(10, Arr.length))
+// console.log(instance.rotateThroughReversal(Arr, 1))
+// console.log(instance.rotateThroughReversal([...Arr], 10))
+// console.log(Arr)
+console.log(instance.rotatethroughJugglingAlgo(Arr, 10))
