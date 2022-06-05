@@ -26,4 +26,85 @@ class DoubleLinkedList {
             this.tail = newNode;
         }
     }
+    insertAfter(data: number, prev: number) {
+        let newNode = new DoubleLinkedListNode(data)
+        if (!this.head) {
+            return null
+        }
+        let trav: DoubleLinkedListNode = this.head;
+        while (trav != null) {
+            if (trav.data === prev) {
+                let nextNode = trav.next
+                if (!nextNode) {
+                    this.tail = newNode;
+                    newNode.prev = trav
+                    trav.next = newNode
+                } else {
+                    newNode.next = nextNode
+                    newNode.prev = trav
+                    trav.next = newNode
+                    nextNode.prev = newNode
+                }
+            }
+            trav.next = trav
+        }
+        return
+    }
+    insertBefore(data: number, next: number) {
+        let newNode = new DoubleLinkedListNode(data)
+        if (!this.head) {
+            return null
+        }
+        let trav: DoubleLinkedListNode = this.head;
+        while (trav != null) {
+            if (trav.data === next) {
+                let prevNode = trav.prev
+                if (!prevNode) {
+                    this.head = newNode
+                    newNode.next = trav
+                    trav.prev = newNode
+                } else {
+                    newNode.next = trav
+                    newNode.prev = prevNode
+                    trav.prev = newNode
+                    prevNode.next = newNode
+                }
+
+            }
+            trav.next = trav
+        }
+        return
+    }
+    remove(data: number) {
+        if (!this.head) {
+            return null
+        }
+        if (this.head.data === data) {
+            let nextNode = this.head.next
+            if (!nextNode) {
+                this.head = null
+                this.tail = null
+            } else {
+                nextNode.prev = null
+                this.head = nextNode
+            }
+            return
+        }
+        let trav: DoubleLinkedListNode = this.head
+        while (trav != null) {
+            if (trav.data === data) {
+                let nextNode = trav.next
+                let prevNode = trav.prev
+                if (!nextNode) {
+                    prevNode.next = null;
+                    this.tail = prevNode
+                    return
+                } else {
+                    nextNode.prev = prevNode
+                    prevNode.next = nextNode
+                }
+            }
+            trav = trav.next
+        }
+    }
 }

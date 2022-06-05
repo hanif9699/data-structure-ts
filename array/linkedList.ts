@@ -71,7 +71,13 @@ class LinkedList {
             return null
         }
         if (this.head.data === data) {
+            if (this.head.next == null) {
+                this.tail = null
+                this.head = null
+                return
+            }
             this.head = this.head.next;
+
             return
         }
         let trav: LinkedNode, prev: LinkedNode;
