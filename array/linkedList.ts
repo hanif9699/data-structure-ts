@@ -98,12 +98,12 @@ class LinkedList {
     }
 }
 
-const list = new LinkedList()
-list.insert(7)
-list.insert(8)
-list.insert(9)
-list.insertAfter(10, 9)
-list.insertBefore(5, 7)
-list.remove(5)
-list.remove(10)
-console.log(list)
+// const list = new LinkedList()
+// list.insert(7)
+// list.insert(8)
+// list.insert(9)
+// list.insertAfter(10, 9)
+// list.insertBefore(5, 7)
+// list.remove(5)
+// list.remove(10)
+// console.log(list)

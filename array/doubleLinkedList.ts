@@ -39,14 +39,16 @@ class DoubleLinkedList {
                     this.tail = newNode;
                     newNode.prev = trav
                     trav.next = newNode
+                
                 } else {
                     newNode.next = nextNode
                     newNode.prev = trav
                     trav.next = newNode
                     nextNode.prev = newNode
                 }
+                break
             }
-            trav.next = trav
+            trav = trav.next
         }
         return
     }
@@ -71,7 +73,7 @@ class DoubleLinkedList {
                 }
 
             }
-            trav.next = trav
+            trav = trav.next
         }
         return
     }
@@ -108,3 +110,12 @@ class DoubleLinkedList {
         }
     }
 }
+const list = new DoubleLinkedList()
+list.insert(7)
+list.insert(8)
+list.insert(9)
+list.insertAfter(10, 9)
+list.insertBefore(5, 7)
+list.remove(5)
+list.remove(10)
+console.log(list)
