@@ -34,6 +34,7 @@ class Deque {
             return
         } else {
             if (this.isEmpty()) {
+                // console.log('Empty')
                 this.front = 0
                 this.rear = 0
                 this.arr[this.rear] = data
@@ -108,3 +109,30 @@ class Deque {
         }
     }
 }
+
+let deque = new Deque(10)
+deque.insertFront(1)
+deque.insertRear(2)
+deque.insertFront(3)
+deque.insertFront(4)
+deque.deleteFront()
+deque.deleteFront()
+deque.deleteFront()
+deque.deleteFront()
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.insertRear(2)
+deque.deleteFront()
+deque.insertRear(1)
+deque.deleteRear()
+
+
+console.log(deque)

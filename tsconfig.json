@@ -1,11 +1,22 @@
 {
-    "target": "es7",
     "compilerOptions": {
-        "target": "esnext",
+        "target": "es2017",
         "module": "commonjs",
         "sourceMap": false,
         "outDir": "build",
-        "rootDir": "src"
+        "rootDir": "src",
+        "declaration": false,
+        "noImplicitAny": false,
+        "esModuleInterop": true,
+        "noEmit": false,
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true
     },
-    "exclude": ["node_modules"]
+    "exclude": [
+        "node_modules"
+    ],
+    "include": [
+        "src/**/*.ts"
+    ]
 }
