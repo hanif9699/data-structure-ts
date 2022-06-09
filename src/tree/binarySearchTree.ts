@@ -75,36 +75,64 @@ class BinaryTree {
         }
         return this.findMinNode(node.left)
     }
-    public preOrderTraversal(node:TreeNode){
-        if(node!=null){
+    public preOrderTraversal(node: TreeNode) {
+        if (node != null) {
             console.log(node.data)
             this.preOrderTraversal(node.left)
             this.preOrderTraversal(node.right)
         }
     }
-    public postOrderTraversal(node:TreeNode){
-        if(node!=null){
+    public postOrderTraversal(node: TreeNode) {
+        if (node != null) {
             this.postOrderTraversal(node.left)
             this.postOrderTraversal(node.right)
             console.log(node.data)
         }
     }
-    public inOrderTraversal(node:TreeNode){
-        if(node!=null){
+    public inOrderTraversal(node: TreeNode) {
+        if (node != null) {
             this.inOrderTraversal(node.left)
             console.log(node.data)
             this.inOrderTraversal(node.right)
         }
     }
+    public getHeight(node: TreeNode, height: number) {
+        if (!node.left && !node.right) {
+            return height
+        }
+        if (!node.left) {
+            return this.getHeight(node.right, height + 1)
+        }
+        if (!node.right) {
+            return this.getHeight(node.left, height + 1)
+        }
+        return Math.max(this.getHeight(node.left, height + 1), this.getHeight(node.right, height + 1))
+    }
+    public getHeightWithNode(node: TreeNode) {
+        if (!node.left && !node.right) {
+            return 0
+        }
+        if (!node.left) {
+            return this.getHeightWithNode(node.right) + 1
+        }
+        if (!node.right) {
+            return this.getHeightWithNode(node.left) + 1
+        }
+        return Math.max(this.getHeightWithNode(node.left), this.getHeightWithNode(node.right)) + 1
+    }
+    public getRoot() {
+        return this.root
+    }
 }
 
-// const BST = new BinaryTree()
-// BST.insert(15);
-// BST.insert(25);
-// BST.insert(10);
-// BST.insert(7);
-// BST.insert(22);
-// BST.insert(17);
+const BST = new BinaryTree()
+BST.insert(15);
+BST.insert(25);
+BST.insert(10);
+BST.insert(7);
+BST.insert(22);
+
+BST.insert(17);
 // BST.insert(13);
 // BST.insert(5);
 // BST.insert(9);
@@ -112,8 +140,12 @@ class BinaryTree {
 
 
 
+
 // BST.remove(15)
-// console.log(BST)
+console.log(BST)
+const BSTRoot = BST.getRoot()
+console.log(BST.getHeight(BSTRoot, 0))
+console.log(BST.getHeightWithNode(BSTRoot))
 
 
 /*

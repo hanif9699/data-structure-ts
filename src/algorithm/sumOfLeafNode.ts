@@ -15,17 +15,17 @@ class GeneralNode {
 
 
 const root = new GeneralNode(1)
-const firstRootChild = new GeneralNode(2)
-const secondRootChild = new GeneralNode(3)
-const thirdRootChild = new GeneralNode(4)
+const firstRootChild = new GeneralNode(1)
+const secondRootChild = new GeneralNode(1)
+const thirdRootChild = new GeneralNode(1)
 
-const firstLeafNode1 = new GeneralNode(5)
-const firstLeafNode2 = new GeneralNode(-5)
-const firstLeafNode3 = new GeneralNode(15)
+const firstLeafNode1 = new GeneralNode(1)
+const firstLeafNode2 = new GeneralNode(1)
+const firstLeafNode3 = new GeneralNode(1)
 
-const secondLeafNode1 = new GeneralNode(5)
-const secondLeafNode2 = new GeneralNode(10)
-const secondLeafNode3 = new GeneralNode(15)
+const secondLeafNode1 = new GeneralNode(1)
+const secondLeafNode2 = new GeneralNode(1)
+const secondLeafNode3 = new GeneralNode(1)
 
 firstRootChild.insert(firstLeafNode1)
 firstRootChild.insert(firstLeafNode2)
@@ -51,4 +51,17 @@ function sumOfLeafNode(node: GeneralNode) {
     }
     return total
 }
+
+function sumOfAllNode(node: GeneralNode) {
+    if (node.children.length <= 0) {
+        return node.data
+    }
+    let total = node.data;
+    for (let i = 0; i < node.children.length; i++) {
+        total = total + sumOfAllNode(node.children[i])
+    }
+    // console.log(node, total)
+    return total 
+}
 console.log(sumOfLeafNode(root))
+console.log(sumOfAllNode(root))
