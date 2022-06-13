@@ -36,6 +36,11 @@ class CircularLinkedList {
     }
     public insertBetween(data: number, item: number) {
         let newNode = new CircularLinkedListNode(data)
+        if (this.last.data == item) {
+            newNode.next = this.last.next
+            this.last.next = newNode
+            this.last = newNode
+        }
         let trav = this.last.next
         while (trav != this.last) {
             if (trav.data == item) {
@@ -45,5 +50,17 @@ class CircularLinkedList {
             }
             trav = trav.next
         }
+    }
+    public deleteItem(item: number) {
+        let trav = this.last.next;
+        let prev = this.last
+        do {
+            if (trav.data == item) {
+                prev.next = trav.next
+                break
+            }
+            prev = trav
+            trav = trav.next
+        } while (trav != this.last.next)
     }
 }
