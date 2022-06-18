@@ -56,8 +56,8 @@ function descInsertionSort(arr: Array<number>) {
     }
     console.log(arr)
 }
-ascInsertionSort([...arrToBeSorted])
-descInsertionSort([...arrToBeSorted])
+// ascInsertionSort([...arrToBeSorted])
+// descInsertionSort([...arrToBeSorted])
 // console.log(arrToBeSorted)
 
 
@@ -115,9 +115,39 @@ function merge(arr: Array<number>, low: number, mid: number, high: number) {
         j++
         k++
     }
-    for (let start = low; start <= high; start++){
+    for (let start = low; start <= high; start++) {
         arr[start] = temp[start]
     }
 }
-mergeSort(arrToBeSorted, 0, arrToBeSorted.length - 1)
-console.log(arrToBeSorted)
+
+
+export function quickSort(arr: Array<any>, low: number, high: number) {
+    if (low < high) {
+        let p = partition(arr, low, high)
+        quickSort(arr, low, p - 1)
+        quickSort(arr, p + 1, high)
+    }
+}
+function partition(arr: Array<any>, low: number, high: number) {
+    let pIndex = low
+    let pivot = arr[high]
+    for (let i = low; i < high; i++) {
+        if (arr[i] <= pivot) {
+            let temp = arr[pIndex]
+            arr[pIndex] = arr[i]
+            arr[i] = temp
+            pIndex++
+        }
+    }
+    let temp = arr[pIndex]
+    arr[pIndex] = pivot
+    arr[high] = temp
+    return pIndex
+}
+
+// quickSort(arrToBeSorted, 0, arrToBeSorted.length - 1)
+// console.log(arrToBeSorted)
+
+// let arr  = ['honif','hommed']
+// quickSort(arr, 0, arr.length - 1)
+// console.log(arr)
